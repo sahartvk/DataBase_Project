@@ -37,28 +37,3 @@ from customer inner join temp on ID=CID
 drop view CodeValidation
 
 select * from CodeValidation
-
-select natcod,cast(right(left(NatCod, 1),1) as int)*10,
-				 cast(right(left(NatCod, 2),1) as int)*9,
-				 cast(right(left(NatCod, 3),1) as int)*8,
-				 cast(right(left(NatCod, 4),1) as int)*7,
-				 cast(right(left(NatCod, 5),1) as int)*6,
-				 cast(right(left(NatCod, 6),1) as int)*5,
-				 cast(right(left(NatCod, 7),1) as int)*4,
-				 cast(right(left(NatCod, 8),1) as int)*3,
-				 cast(right(left(NatCod, 9),1) as int)*2
-				 from customer
-
-select cast(substring(NatCod, 1, 1) as int)*10+
-				 cast(right(left(NatCod, 2),1) as int)*9+
-				 cast(right(left(NatCod, 3),1) as int)*8+
-				 cast(right(left(NatCod, 4),1) as int)*7+
-				 cast(right(left(NatCod, 5),1) as int)*6+
-				 cast(right(left(NatCod, 6),1) as int)*5+
-				 cast(right(left(NatCod, 7),1) as int)*4+
-				 cast(right(left(NatCod, 8),1) as int)*3+
-				 cast(right(left(NatCod, 9),1) as int)*2
-				 from customer
-
-
-select * from Customer
