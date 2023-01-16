@@ -1,4 +1,4 @@
-create table Customer(
+create table customer(
 CID int primary key,
 name varchar(80),
 NatCod varchar(10),
@@ -47,10 +47,10 @@ status int ,
 status_Desc varchar(50),
 )
 
-
+drop table Trn_Src_Dec
 drop table Branch
 drop table Deposit_Status
 drop table Deposit_Type
-drop table customer
 drop table Deposit
-drop table Trn_Src_Dec
+drop table customer
+
