@@ -1,3 +1,5 @@
+--q1
+
 --drop view CodeValidation
 create view CodeValidation
 as
@@ -33,7 +35,5 @@ select CID, Name, NatCod, Add_, tel,
 from customer inner join temp on ID=CID
 
 
-
-drop view CodeValidation
-
 select * from CodeValidation
+
