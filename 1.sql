@@ -1,4 +1,4 @@
-
+--drop view CodeValidation
 create view CodeValidation
 as
 
@@ -23,11 +23,11 @@ temp(ID, Control) as(
 	from customer inner join add_zero on CID=ID
 )
 
-select CID, Name, NatCod, Add_, tel,
+select CID, Name, NatCod, Add_, tel,control,11-control as q,
 	case
 		when len(NatCod)<8 or len(NatCod)>10 then 'false'
 		when control < 2 and control = cast(right(NatCod,1) as int) then 'true'
-		when control > 2 and (11 - control) = cast(right(NatCod,1) as int) then 'true'
+		when control >= 2 and (11 - control) = cast(right(NatCod,1) as int) then 'true'
 		else 'false'
 	end as NatCode_validation			
 from customer inner join temp on ID=CID
