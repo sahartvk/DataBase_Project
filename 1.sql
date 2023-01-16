@@ -23,7 +23,7 @@ temp(ID, Control) as(
 	from customer inner join add_zero on CID=ID
 )
 
-select CID, Name, NatCod, Add_, tel,control,11-control as q,
+select CID, Name, NatCod, Add_, tel,
 	case
 		when len(NatCod)<8 or len(NatCod)>10 then 'false'
 		when control < 2 and control = cast(right(NatCod,1) as int) then 'true'
