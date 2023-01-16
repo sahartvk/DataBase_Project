@@ -48,6 +48,9 @@ insert into Trn_Src_Dec (VoucherId, TrnDate, TrnTime, Amount, SourceDep, DesDep,
 insert into Trn_Src_Dec (VoucherId, TrnDate, TrnTime, Amount, SourceDep, DesDep, Branch_id, Trn_Desc) values (29, '2022-02-06', '03:52:49', '35', 65, 18, 2, 'Occlusion of L Inqnl Lymph with Extralum Dev, Open Approach');
 insert into Trn_Src_Dec (VoucherId, TrnDate, TrnTime, Amount, SourceDep, DesDep, Branch_id, Trn_Desc) values (30, '2022-12-24', '13:45:17', '494', 45, 12, 2, 'Dilation of L Int Mamm Art with Intralum Dev, Open Approach');
 
+
+insert into Trn_Src_Dec (VoucherId, TrnDate, TrnTime, Amount, SourceDep, DesDep, Branch_id, Trn_Desc) values (31, '2022-01-01', '04:57:45', '846', 87, 12, 4, 'Removal of Autologous Tissue Substitute from R Breast, Endo');
+
 --insert Deposit
 insert into Deposit(Dep_ID,Dep_Type,CID,OpenDate,status_) values(12,1,1,'2006-05-02',1)
 insert into Deposit(Dep_ID,Dep_Type,CID,OpenDate,status_) values(13,2,2,'2006-11-02',1)
