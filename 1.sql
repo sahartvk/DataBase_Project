@@ -1,29 +1,39 @@
 
 create view CodeValidation
 as
-begin
 
-with temp as(ID, Code, Control) as(
-	select CID, (cast(substring(LPAD(NatCode, 10, '0')), 10, 10) as int)*10+
-						 cast(substring(LPAD(NatCode, 10, '0')), 9, 9) as int)*9+
-						 cast(substring(LPAD(NatCode, 10, '0')), 8, 8) as int)*8+
-						 cast(substring(LPAD(NatCode, 10, '0')), 7, 7) as int)*7+
-						 cast(substring(LPAD(NatCode, 10, '0')), 6, 6) as int)*6+
-						 cast(substring(LPAD(NatCode, 10, '0')), 5, 5) as int)*5+
-						 cast(substring(LPAD(NatCode, 10, '0')), 4, 4) as int)*4+
-						 cast(substring(LPAD(NatCode, 10, '0')), 3, 3) as int)*3+
-						 cast(substring(LPAD(NatCode, 10, '0')), 2, 2) as int)*2) % 11
+with add_zero(ID,code) as (
+	select CID, case
+					when len(Natcod)=8 then '00'+ NatCod
+					when len(NatCod)=9 then '0'+ NatCod 
+				end
 	from customer
+),
+temp(ID, Control) as(
+	select CID, (
+						 cast(substring(Code, 10, 10) as int)*10+
+						 cast(substring(Code, 9, 9) as int)*9+
+						 cast(substring(Code, 8, 8) as int)*8+
+						 cast(substring(Code, 7, 7) as int)*7+
+						 cast(substring(Code, 6, 6) as int)*6+
+						 cast(substring(Code, 5, 5) as int)*5+
+						 cast(substring(Code, 4, 4) as int)*4+
+						 cast(substring(Code, 3, 3) as int)*3+
+						 cast(substring(Code, 2, 2) as int)*2) % 11
+	from customer inner join add_zero on CID=ID
 )
 
-select CID, Name, NatCode, Add, tel,
+select CID, Name, NatCod, Add_, tel,
 	case
-		when len(NatCode)<8 or len(NatCode)>10 then 'false'
-		when control < 2 and control = cast(right(NatCode,1) as int) then 'true'
-		then control > 2 and 11 - control = cast(right(NatCode,1) as int) then 'true'
+		when len(NatCod)<8 or len(NatCod)>10 then 'false'
+		when control < 2 and control = cast(right(NatCod,1) as int) then 'true'
+		when control > 2 and 11 - control = cast(right(NatCod,1) as int) then 'true'
 		else 'false'
-			
+	end as NatCode_validation			
 from customer inner join temp on ID=CID
 
-end
 
+
+
+
+select * from CodeValidation
