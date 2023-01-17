@@ -1,5 +1,4 @@
 
-
 --q2
 drop procedure getTransaction 
 create procedure getTransaction 
@@ -58,21 +57,6 @@ select SourceDep, DesDep, TrnDate, TrnTime, Amount, ADate, totalAmount,
 	from all_trn
 )
 
-
-
---all_trn (SourceDep, DesDep, TrnDate, TrnTime, Amount) as(
---select * from Recdest 
---union
---select * from Recdest2
---order by TrnDate,TrnTime asc
---),
-
-
---select * from Recdest 
---union
---select * from Recdest2
---order by TrnDate,TrnTime asc
-
 select * from one_two
 order by TrnDate,TrnTime asc
 
@@ -83,4 +67,3 @@ EXEC getTransaction @SourceDep=25, @destDep=87
 
 -------------------------------------------------------------------------------------------------------------------
 
-select * from Trn_Src_Dec
